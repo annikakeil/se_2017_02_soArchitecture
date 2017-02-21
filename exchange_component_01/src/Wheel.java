@@ -16,6 +16,10 @@ public class Wheel {
         port = new Port();
     }
 
+    public String getVersion() {
+        return "Aweseom Wheel One - King Edition";
+    }
+
     public class Port implements IWheel {
 
         public boolean setBrake() {
