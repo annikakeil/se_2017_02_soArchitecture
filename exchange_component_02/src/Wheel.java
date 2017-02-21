@@ -33,6 +33,7 @@ public class Wheel {
     }
 
     private boolean innerSetBreak() {
+        System.out.println("setBreaks");
         if(isBrakeSet == false){
             isBrakeSet = true;
             return true;
@@ -41,6 +42,7 @@ public class Wheel {
     }
 
     private boolean innerReleaseBreak() {
+        System.out.println("releaseBreaks");
         if(isBrakeSet == true){
             isBrakeSet = false;
             return true;

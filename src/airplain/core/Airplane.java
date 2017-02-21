@@ -11,7 +11,7 @@ public class Airplane {
     private EventBus eventBus = new EventBus("AirplaneBus");
 
     public void addSubscriber(Subscriber subscriber){
-        eventBus.register(subscriber);
+            eventBus.register(subscriber);
     }
 
     public void setBreaks() {
