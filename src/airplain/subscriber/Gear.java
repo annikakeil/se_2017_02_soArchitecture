@@ -1,5 +1,6 @@
 package airplain.subscriber;
 
+import airplain.core.Component;
 import airplain.events.ReleaseBreakEvent;
 import airplain.events.SetBreakEvent;
 import com.google.common.eventbus.Subscribe;
@@ -13,16 +14,20 @@ public class Gear extends Subscriber {
         super(id);
     }
 
-    private List<Object> wheels = new ArrayList<Object>();
+    protected List<Component> wheels = new ArrayList<Component>();
 
     @Subscribe
     public void receive(ReleaseBreakEvent ev) {
-
+        for (Component component : wheels) {
+            component.releaseBreak();
+        }
     }
 
     @Subscribe
     public void receive(SetBreakEvent ev) {
-
+        for (Component component : wheels) {
+            component.setBrake();
+        }
     }
 
 }

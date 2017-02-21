@@ -7,7 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
-public class ComponentLoader {
+public class Component {
     //Wheel wheel = Wheel.getInstance();
     // Port p = wheel.port;
     // p.setBrake();
@@ -18,14 +18,14 @@ public class ComponentLoader {
 
     private Class clazz;
 
-    public ComponentLoader(String componentName) {
+    public Component(String componentName) {
         loadJar(componentName);
     }
 
     public void loadJar(String componentName) {
         try {
             URL[] urls = {new File(getPathToJar()).toURI().toURL()}; // URL Generieren
-            URLClassLoader urlClassLoader = new URLClassLoader(urls, ComponentLoader.class.getClassLoader()); // JAR File mit Classload laden
+            URLClassLoader urlClassLoader = new URLClassLoader(urls, Component.class.getClassLoader()); // JAR File mit Classload laden
             clazz = Class.forName(componentName, true, urlClassLoader); // Klasse laden
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
