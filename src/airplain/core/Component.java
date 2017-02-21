@@ -1,11 +1,15 @@
 package airplain.core;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Properties;
 
 public class Component {
     //Wheel wheel = Wheel.getInstance();
@@ -105,7 +109,19 @@ public class Component {
 
 
     private String getPathToJar() {
-        String componentNumber = "01";// TODO
+        String componentNumber = "01";
+        try {
+            Properties properties = new Properties();
+            FileInputStream fileInputStream = new FileInputStream(userDirectory + fileSeparator + "component.props");
+            properties.load(fileInputStream);
+            fileInputStream.close();
+            componentNumber = properties.getProperty("componentType");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return userDirectory + fileSeparator + "exchange_component_" + componentNumber + fileSeparator + jarFileName;
     }
 }
