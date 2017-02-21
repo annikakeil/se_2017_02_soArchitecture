@@ -18,6 +18,7 @@ public class Gear extends Subscriber {
 
     @Subscribe
     public void receive(ReleaseBreakEvent ev) {
+        System.out.println("Recv Event[ReleaseBreakEvent]: " + getClass().getSimpleName());
         for (Component component : wheels) {
             component.releaseBreak();
         }
@@ -25,6 +26,7 @@ public class Gear extends Subscriber {
 
     @Subscribe
     public void receive(SetBreakEvent ev) {
+        System.out.println("Recv Event[SetBreakEvent]: " + getClass().getSimpleName());
         for (Component component : wheels) {
             component.setBrake();
         }

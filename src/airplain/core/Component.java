@@ -18,11 +18,12 @@ public class Component {
 
     private String fileSeparator = System.getProperty("file.separator");
     private String userDirectory = System.getProperty("user.dir");
-    private String jarFileName = "Wheel.jar"; // TODO Component name auswerten
+    private String jarFileName;
 
     private Class clazz;
 
     public Component(String componentName) {
+        jarFileName = componentName + ".jar";
         loadJar(componentName);
     }
 
@@ -36,6 +37,8 @@ public class Component {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
+        System.out.println(componentName + " loaded. Version: " + getVersion());
     }
 
     private Object getInstance() {

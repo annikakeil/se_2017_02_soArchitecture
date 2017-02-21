@@ -15,10 +15,16 @@ public class Airplane {
     }
 
     public void setBreaks() {
+        debug(SetBreakEvent.class.getSimpleName());
         eventBus.post(new SetBreakEvent(1, "Bremsen drücken"));
     }
 
     public void releaseBreaks() {
+        debug(ReleaseBreakEvent.class.getSimpleName());
         eventBus.post(new ReleaseBreakEvent(1, "Bremsen loslassen"));
+    }
+
+    private void debug(String name) {
+        System.out.println("Send Event[" + name + "]: " + getClass().getSimpleName());
     }
 }
